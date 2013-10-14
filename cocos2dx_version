@@ -1,0 +1,3 @@
+cocos2dx:
+    version: "3.0-alpha0"
+    git_repo: https://github.com/lijinlong/cocos2d-x.git

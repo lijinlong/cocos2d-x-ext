@@ -24,6 +24,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
+    // Co
+    Configuration* config = Configuration::getInstance();
+    config->loadConfigFile("config");
+    //config->setObject("game.sett", String::create("ddddddd"));
+    //config->dumpInfo();
+    
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 

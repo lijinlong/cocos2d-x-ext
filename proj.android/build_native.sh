@@ -1,4 +1,4 @@
-APPNAME="myext"
+APPNAME="demo"
 
 # options
 
