@@ -9,6 +9,7 @@
 #ifndef __HelloExt__MyAssetsManager__
 #define __HelloExt__MyAssetsManager__
 
+#include <iostream>
 #include "myExtConfig.h"
 
 NS_MY_EXT_BEGIN
@@ -50,7 +51,7 @@ private:
     UpdateChecker* _updateChecker;
     AssetsDownLoader* _assetsDownloader;
     DownloadList* _downloadList;
-    DISALLOW_COPY_AND_ASSIGN(AssetsManager);
+    //DISALLOW_COPY_AND_ASSIGN(AssetsManager);
 };
 
 NS_MY_EXT_END

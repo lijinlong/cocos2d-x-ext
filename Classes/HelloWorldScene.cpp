@@ -1,4 +1,6 @@
 #include "HelloWorldScene.h"
+#include "cocos-ext.h"
+#include "CURLObjectTest.h"
 
 USING_NS_CC;
 
@@ -40,11 +42,18 @@ bool HelloWorld::init()
                                            "CloseSelected.png",
                                            CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
     
-	closeItem->setPosition(Point(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
+	closeItem->setPosition(Point(200, 100));
+    closeItem->setTag(0);
+    auto item = MenuItemImage::create(
+                                          "CloseNormal.png",
+                                          "CloseSelected.png",
+                                          CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+    
+	item->setPosition(Point(200, 140));
+    item->setTag(1);
 
     // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
+    auto menu = Menu::create(closeItem,item, NULL);
     menu->setPosition(Point::ZERO);
     this->addChild(menu, 1);
 
@@ -78,6 +87,14 @@ bool HelloWorld::init()
 
 void HelloWorld::menuCloseCallback(Object* pSender)
 {
+    Node* node = dynamic_cast<Node*>(pSender);
+    if (node) {
+        int tag = node->getTag();
+        if (tag != 0) {
+            Director::getInstance()->pushScene(CURLObjectTest::scene());
+            return;
+        }
+    }
     Director::getInstance()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
